@@ -1,0 +1,33 @@
+<html>
+  <body>
+    Hello World
+
+    <script>
+      // const req = new XMLHttpRequest();
+      // req.onreadystatechange = function() {
+      //   if (req.readyState === 4) {
+      //     console.log(req.response);
+      //   }
+      // };
+      // req.open("GET", "http://localhost:9999/");
+      // req.send();
+
+      const evtSource = new EventSource("http://localhost:9999/sse2");
+
+      // evtSource.onmessage = function(event) {
+      //   console.log(event.data)
+      // };
+
+      // const evtSource = new EventSource("http://raspberrypi4.local:9999/sse2");
+
+      evtSource.onmessage = function(event) {
+        console.log("ddd", event.data);
+      };
+
+      evtSource.onerror = function(err) {
+        console.error("EventSource failed:", err);
+      };
+      console.log("Moin");
+    </script>
+  </body>
+</html>
